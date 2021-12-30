@@ -4,28 +4,21 @@
 package csd;
 
 class App {
-	public static void main(String [] args) 
-	{	
-		java.util.Scanner kb = new java.util.Scanner(System.in);		
-		System.out.print("Bir sayı giriniz:");
-		int val = Integer.parseInt(kb.nextLine());
-		
-		if (!NumberUtil.isEven(val))
-			System.out.println("Tek");
-		else
-			System.out.println("Çift");
+
+		public static void main(String [] args)
+		{	
+			int a, b;
 			
-		System.out.println("Tekrar yapıyor musunuz?");		
-	}
-}
+			a = 2;
 
-
-class NumberUtil {
-	public static boolean isEven(int val)
-	{
-		return val % 2 == 0;
-	}
+			b = ++a;
+			b += a-- * --a;		
 	
-	//...
+			
+			System.out.printf("a = %d%n", a);
+			System.out.printf("b = %d%n", b);
+			
+		}
 }
+
 
