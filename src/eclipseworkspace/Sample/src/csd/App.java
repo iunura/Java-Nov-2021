@@ -1,38 +1,51 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının basamak sayısını döndüren digitsCount isimli
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının basamak sayısını döndüren digitsSum
+	isimli
 	metodu yazınız ve aşağıdaki kod ile test ediniz 	
 ----------------------------------------------------------------------------------------------------------------------*/
+
 package csd;
 
 class App {
-	public static void main(String [] args) 
-	{
-		DigitsCountTest.run();			
+	public static void main(String [] args)
+	{		
+		PowTest.run();
 	}
 }
 
-class DigitsCountTest {
-	
+
+class PowTest {
 	public static void run()
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
-		System.out.println("Sayıları girmeye başlayınız:");
 		
-		while (true) {
-			System.out.print("Bir sayı giriniz:");
-			int val = Integer.parseInt(kb.nextLine());
+		for (;;) {
+			System.out.print("Tabani giriniz :");
+			int a = Integer.parseInt(kb.nextLine());
 			
-			System.out.printf("%d sayısının basamak sayısı:%d%n", val, NumberUtil.digitsCount(val));
+			System.out.print("Ussu giriniz :");
+			int b = Integer.parseInt(kb.nextLine());
 			
-			if (val == 0)
-				return;
+//			System.out.printf("pow(%d, %d) = %d%n", a, b, NumberUtil.pow(a,b));
+			
+//			if (b < 0);
+			
+			return;
+			
 		}
 	}
-}
-
+	
 class NumberUtil {
-	public static int digitsCount(int val)
-	{
-		//TODO:
-	}
+	
+	public static int run (int a, int b) {
+	
+	int result = 1;
+	
+	while (b --> 0)
+		result *=a;
+	
+	return result;
+	}	
+	
+ }
 }
