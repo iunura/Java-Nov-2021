@@ -1,51 +1,78 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının basamak sayısını döndüren digitsSum
-	isimli
-	metodu yazınız ve aşağıdaki kod ile test ediniz 	
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir n değeri için n-inci asal sayıyı döndüren getPrime isimli 
+	metodu yazınız ve aşağıdaki kod ile test ediniz.
+	Açıklamalar:	
+		- isPrime metodunun hızlı olan versiyonunu kullanınız
 ----------------------------------------------------------------------------------------------------------------------*/
-
 package csd;
 
 class App {
-	public static void main(String [] args)
-	{		
-		PowTest.run();
+	public static void main(String [] args) 
+	{
+		GetPrimeTest.run();			
 	}
 }
 
-
-class PowTest {
+class GetPrimeTest {	
 	public static void run()
-	{
+	{		
 		java.util.Scanner kb = new java.util.Scanner(System.in);
 		
 		for (;;) {
-			System.out.print("Tabani giriniz :");
-			int a = Integer.parseInt(kb.nextLine());
+			System.out.print("Bir sayı giriniz:");
+			int n = Integer.parseInt(kb.nextLine());
 			
-			System.out.print("Ussu giriniz :");
-			int b = Integer.parseInt(kb.nextLine());
+			if (n < 1) 
+				break;
 			
-//			System.out.printf("pow(%d, %d) = %d%n", a, b, NumberUtil.pow(a,b));
+			System.out.printf("%d. asal sayı:%d%n", n, NumberUtil.getPrime(n));			
+		}
+		
+		System.out.println("Tekrar yapıyor musunuz?");
+	}
+}
+
+class NumberUtil {
+	public static long getPrime(int n)
+	{
+		int count = 0;
+		long val = 2;
+		
+		for (;;) {
+			if (isPrime(val))
+				++count;
 			
-//			if (b < 0);
+			if (count == n)
+				return val;
 			
-			return;
-			
+			++val;
 		}
 	}
 	
-class NumberUtil {
+	public static boolean isPrime(long val)
+	{
+		if (val <= 1)
+			return false;
+		
+		if (val % 2 == 0)
+			return val == 2;
+		
+		if (val % 3 == 0)
+			return val == 3;
+		
+		if (val % 5 == 0)
+			return val == 5;
+		
+		if (val % 7 == 0)
+			return val == 7;	
+		
+		
+		for (long i = 11; i * i <= val; i += 2)		
+			if (val % i == 0)
+				return false;		
+		
+		return true;							
+	}
 	
-	public static int run (int a, int b) {
 	
-	int result = 1;
-	
-	while (b --> 0)
-		result *=a;
-	
-	return result;
-	}	
-	
- }
 }
