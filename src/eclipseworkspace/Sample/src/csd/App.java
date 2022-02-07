@@ -1,78 +1,26 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir n değeri için n-inci asal sayıyı döndüren getPrime isimli 
-	metodu yazınız ve aşağıdaki kod ile test ediniz.
-	Açıklamalar:	
-		- isPrime metodunun hızlı olan versiyonunu kullanınız
+	Yukarıdaki örnek için gerek olmasa da parantez konması okunabilirliği artırır 
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{
-		GetPrimeTest.run();			
-	}
-}
-
-class GetPrimeTest {	
-	public static void run()
-	{		
 		java.util.Scanner kb = new java.util.Scanner(System.in);
+		System.out.print("Birinci sayıyı giriniz:");
+		int a = Integer.parseInt(kb.nextLine());
+
+		System.out.print("İkinci sayıyı giriniz:");
+		int b = Integer.parseInt(kb.nextLine());
 		
-		for (;;) {
-			System.out.print("Bir sayı giriniz:");
-			int n = Integer.parseInt(kb.nextLine());
-			
-			if (n < 1) 
-				break;
-			
-			System.out.printf("%d. asal sayı:%d%n", n, NumberUtil.getPrime(n));			
-		}
+		System.out.print("Üçüncü sayıyı giriniz:");
+		int c = Integer.parseInt(kb.nextLine());
 		
-		System.out.println("Tekrar yapıyor musunuz?");
+		int max;		
+		
+		max = (a > b) ? (a > c ? a : c) : (b > c ? b : c);
+		
+		System.out.printf("max(%d, %d, %d) = %d%n", a, b, c, max);
 	}
 }
 
-class NumberUtil {
-	public static long getPrime(int n)
-	{
-		int count = 0;
-		long val = 2;
-		
-		for (;;) {
-			if (isPrime(val))
-				++count;
-			
-			if (count == n)
-				return val;
-			
-			++val;
-		}
-	}
-	
-	public static boolean isPrime(long val)
-	{
-		if (val <= 1)
-			return false;
-		
-		if (val % 2 == 0)
-			return val == 2;
-		
-		if (val % 3 == 0)
-			return val == 3;
-		
-		if (val % 5 == 0)
-			return val == 5;
-		
-		if (val % 7 == 0)
-			return val == 7;	
-		
-		
-		for (long i = 11; i * i <= val; i += 2)		
-			if (val % i == 0)
-				return false;		
-		
-		return true;							
-	}
-	
-	
-}
